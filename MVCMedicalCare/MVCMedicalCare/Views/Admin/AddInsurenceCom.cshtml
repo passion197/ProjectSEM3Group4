@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Add Insurence Company";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<link href="~/assets/css/AddInsurence.css" rel="stylesheet" />
+
+<h3 style="margin-left:7%; font-size:30px;">Insurence Company</h3>
+<div class="container">
+    <div class="row-fluid margin-bottom-10">
+						<form action="@Url.Action("AddCompany", "Admin")" id="contact-form" class="reg-page" method="post">
+						  <fieldset>
+						    <h3>Add Insurence Company</h3>
+						    <div class="control-group">
+						      <label class="control-label" for="name">Company Name</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="name" id="name">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="field">Phone No</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="field" id="field">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="subject">Company Website</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="subject" id="subject">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="message">Address</label>
+						      <div class="controls">
+						        <textarea class="input-xlarge" name="message" id="message" rows="3"></textarea>
+						      </div>
+						    </div>
+	              <div class="form-actions">
+			            <button class="btn-u pull-left" type="submit">Add New</button>
+	    			      <button type="reset" class="btn">Cancel</button>
+	        			</div>
+						  </fieldset>
+						</form>
+        </div>
+</div>
+<script type="text/javascript" src="~/assets/js/AddInsurenceValidation.js"></script>
+<script type="text/javascript"  src="~/assets/js/jquery.validate.min.js"></script>

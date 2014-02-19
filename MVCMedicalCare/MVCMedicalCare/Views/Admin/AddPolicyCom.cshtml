@@ -1,0 +1,59 @@
+﻿@model List<MVCMedicalCare.Models.CompanyDetail>
+@{
+    ViewBag.Title = "AddPolicyCom";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<link href="~/assets/css/AddInsurence.css" rel="stylesheet" />
+
+<h3 style="margin-left:7%; font-size:30px;">Insurence Company</h3>
+<div class="container">
+    <div class="row-fluid margin-bottom-10">
+						<form action="@Url.Action("AddPolicy", "Admin")" id="contact-form" class="reg-page" method="post">
+						  <fieldset>
+						    <h3>Add Policy Company</h3>
+						    <div class="control-group">
+						      <label class="control-label" for="name">Policy Type Name</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="name" id="name">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="descr">Policy Description</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="descr" id="descr">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="amount">Policy Amount</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="amount" id="amount">
+						      </div>
+						    </div>
+                            <div class="control-group">
+						      <label class="control-label" for="emi">Policy EMI</label>
+						      <div class="controls">
+						        <input type="text" class="input-xlarge" name="emi" id="emi">
+						      </div>
+						    </div>
+						    <div class="control-group">
+						      <label class="control-label" for="cbbCom">Company Name</label>
+						      <div class="controls">
+						      @*  <textarea class="input-xlarge" name="message" id="message" rows="3"></textarea>*@
+                                  <select class="input-xlarge" name="cbbCom" id="cbbCom">
+                                      @foreach (var c in Model) {
+                                      <option value="@c.CompanyId">@c.CompanyName</option>
+                                      }
+                                  </select>
+						      </div>
+						    </div>
+	              <div class="form-actions">
+			            <button class="btn-u pull-left" type="submit">Add Policy</button>
+	    			      <button type="reset" class="btn">Cancel</button>
+	        			</div>
+						  </fieldset>
+						</form>
+        </div>
+</div>
+<script type="text/javascript" src="~/assets/js/AddPolicyComValidation.js"></script>
+<script type="text/javascript"  src="~/assets/js/jquery.validate.min.js"></script>

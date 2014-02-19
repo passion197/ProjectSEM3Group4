@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+  
+    <title>H | Welcome Home</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+    <link rel="stylesheet" href="~/assets/css/headers/header1.css" />
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/assets/css/style_responsive.css" />
+    <link rel="shortcut icon" href="favicon.ico" />        
+    <!-- CSS Implementing Plugins -->    
+    <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/assets/plugins/flexslider/flexslider.css" type="text/css" media="screen" />    	
+    <link rel="stylesheet" href="~/assets/plugins/parallax-slider/css/parallax-slider.css" type="text/css" />
+    <!-- CSS Theme -->    
+    <link rel="stylesheet" href="~/assets/css/themes/default.css" id="style_color" />
+@*    <link rel="stylesheet" href="~/assets/css/themes/headers/default.css" id="style_color-header-1" /> *@   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+    
+<!--=== Top ===-->    
+<div class="top">
+    <div class="container">         
+        <ul class="loginbar pull-right">
+            <li><i class="icon-globe"></i><a>Languages <i class="icon-sort-up"></i></a>
+                <ul class="nav-list">
+                    <li class="active"><a href="#">English</a> <i class="icon-ok"></i></li>
+                    <li><a href="#">Spanish</a></li>
+                    <li><a href="#">Russian</a></li>
+                    <li><a href="#">German</a></li>
+                </ul>
+            </li>   
+            <li class="devider">&nbsp;</li>
+            <li><a href="page_faq.html" class="login-btn">Help</a></li>  
+            <li class="devider">&nbsp;</li>
+            @if(@Session["User"]==null){
+            <li><a href='~/Home/Page_login' class="login-btn">Login</a></li>   }
+            else
+            {
+                <li><a href="#" style="font-weight:bold">Hello @Session["User"].ToString() !</a></li>
+                <li><a href='~/Home/Logout' class="login-btn">Logout</a></li> 
+            }
+           
+        </ul>
+    </div>      
+</div><!--/top-->
+<!--=== End Top ===-->    
+
+<!--=== Header ===-->
+<div class="header">               
+    <div class="container"> 
+        <!-- Logo -->       
+        <div class="logo">                                             
+            <a href="../Home"><img id="logo-header" src="~/assets/img/logo1-default.png" alt="Logo" /></a>
+        </div><!-- /logo -->        
+                                    
+        <!-- Menu -->       
+        <div class="navbar">                                
+            <div class="navbar-inner">                                  
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a><!-- /nav-collapse -->                                  
+                <div class="nav-collapse collapse">                                     
+                    <ul class="nav top-2">
+                        <li class="active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home
+                                <b class="caret"></b>                            
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="active"><a href="index.html">Option1: Landing Page</a></li>
+                                <li><a href="page_home.html">Option2: Header Option</a></li>
+                                <li><a href="page_home4.html">Option3: Revolution Slider</a></li>
+                                <li><a href="page_home5.html">Option4: Amazing Content</a></li>
+                                <li><a href="page_home1.html">Option5: Mixed Content</a></li>
+                                <li><a href="page_home2.html">Option6: Content with Sidebar</a></li>
+                                <li><a href="page_home3.html">Option7: Aplle Style Slider</a></li>
+                                <li><a href="page_home_all.html">Home All In One</a></li>
+                            </ul>
+                            <b class="caret-out"></b>                        
+                        </li>
+                       
+                        <li>
+                            <a href="page_contact.html">News</a>
+                            
+                                                
+                        </li>
+                        <li>
+                            <a href="page_contact.html">FeedBack</a>
+                            
+                                                
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">About Us
+                                                     
+                            </a>
+                           
+                                            
+                        </li>
+                        <li>
+                            <a href="page_contact.html">Contact Us
+                                                         
+                            </a>
+                            
+                                                
+                        </li>
+                        <li><a class="search"><i class="icon-search search-btn"></i></a></li>                               
+                    </ul>
+                    <div class="search-open">
+                        <div class="input-append">
+                            <form />
+                                <input type="text" class="span3" placeholder="Search" />
+                                <button type="submit" class="btn-u">Go</button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /nav-collapse -->                                
+            </div><!-- /navbar-inner -->
+        </div><!-- /navbar -->                          
+    </div><!-- /container -->               
+</div><!--/header -->      
+<!--=== End Header ===-->
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @Html.Partial("Footer")
+
+    <!-- JS Global Compulsory -->			
+<script type="text/javascript" src="~/assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="~/assets/js/modernizr.custom.js"></script>		
+<script type="text/javascript" src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>	
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="~/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="~/assets/plugins/parallax-slider/js/modernizr.js"></script>
+<script type="text/javascript" src="~/assets/plugins/parallax-slider/js/jquery.cslider.js"></script> 
+<script type="text/javascript" src="~/assets/plugins/back-to-top.js"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="~/assets/js/app.js"></script>
+<script type="text/javascript" src="~/assets/js/pages/index.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+        App.initSliders();
+        Index.initParallaxSlider();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿@model List<MVCMedicalCare.Models.PolicyCompanyResult>
+
+@{
+    ViewBag.Title = "ViewPolicy";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<script type="text/javascript" src="~/assets/js/jquery.dataTables.js"></script>
+<link href="~/assets/css/ViewPolicyCom.css" rel="stylesheet" />
+<script src="~/assets/js/ViewPolicyCom.js"></script>
+
+<h3 style="margin-left:7%; font-size:30px;">Manager Policy Company</h3>
+
+
+<div class="container">	
+ <div class="row-fluid margin-bottom-10">		
+     <h3 style="text-align:center">Policy Company</h3>
+    <table cellpadding="0" cellspacing="0" border="1" class="table table-striped table-bordered" id="example" >
+	    <thead>
+	    	<tr>
+			    <th>Policy Id</th>
+			    <th>Policy Name</th>
+			    <th>Policy Description</th>
+			    <th>Amount</th>
+			    <th>EMI</th>
+                <th>Company Name</th>
+		    </tr>
+	    </thead>
+	<tbody>
+		@foreach(var c in Model)
+        {
+		<tr class="even gradeC">
+			<td>@c.PolicyId</td>
+			<td>@c.PolicyName</td>
+			<td class="center">@c.PolicyDesc</td>
+			<td class="center">@c.Amount</td>
+			<td class="center">@c.EMI</td>
+            <td class="center">  @c.CompanyName
+                <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#@c.CompanyId" style="float:right">
+                 <i class="icon-search"></i>  Detail
+                </button>
+            </td>   
+		</tr>
+        }
+		
+	</tbody>
+    </table>
+ </div>
+
+@foreach(var p in Model)
+{
+ <div class="modal fade" id="@p.CompanyId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Company Details</h4>
+      </div>
+      <div class="modal-body">
+            <table cellpadding="0" cellspacing="0" border="1" class="table table-striped table-bordered" >
+             <tbody>
+                 <tr>
+                     <td>Company ID</td><td> @p.CompanyId</td>
+                 </tr>
+                 <tr>
+                     <td>Company Name</td><td> @p.CompanyName</td>
+                 </tr>
+                 <tr>
+                     <td>Company Address</td><td> @p.ComAddress</td>
+                 </tr><tr>
+                     <td>Company Phone</td><td> @p.ComPhone</td>
+                 </tr><tr>
+                     <td>Company Url</td><td> @p.ComUrl</td>
+                 </tr>
+             </tbody>
+         </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding:8px 28px; margin-right:43%">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+          
+
+}
+    </div>
+
+<div class="container" style="text-align:center">
+    <button type="button" class="btn btn-primary"><i class="icon-plus-sign"></i> Add new Policy</button>
+
+
+</div>

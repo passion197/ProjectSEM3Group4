@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_EndTotal" Class="DataMedicalDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=PASS\SQLEXPRESS;Initial Catalog=DB_EndTotal;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_EndTotalConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PolicyRequestDetail" Member="PolicyRequestDetails">
+    <Type Name="PolicyRequestDetail">
+      <Column Name="RequestId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="empno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PolycyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PolicyRequestDetail_PolicyApprovalDetail" Member="PolicyApprovalDetails" ThisKey="RequestId" OtherKey="RequestId" Type="PolicyApprovalDetail" />
+      <Association Name="EmpRegister_PolicyRequestDetail" Member="EmpRegister" ThisKey="empno" OtherKey="empno" Type="EmpRegister" IsForeignKey="true" />
+      <Association Name="policy_PolicyRequestDetail" Member="policy" ThisKey="PolycyId" OtherKey="policyid" Type="policy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PolicyApprovalDetails" Member="PolicyApprovalDetails">
+    <Type Name="PolicyApprovalDetail">
+      <Column Name="PolicyApprovalId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RequestId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PolicyRequestDetail_PolicyApprovalDetail" Member="PolicyRequestDetail" ThisKey="RequestId" OtherKey="RequestId" Type="PolicyRequestDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.policiesonemployees" Member="policiesonemployees">
+    <Type Name="policiesonemployee">
+      <Column Name="empno" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="policyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="policyname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="policyamount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="policyduration" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
+      <Column Name="emi" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="pstartdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="penddate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="policy_policiesonemployee" Member="policy" ThisKey="policyid" OtherKey="policyid" Type="policy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmpRegister" Member="EmpRegisters">
+    <Type Name="EmpRegister">
+      <Column Name="empno" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="designation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="joindate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="salary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="policystatus" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="policyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EmpRegister_PolicyRequestDetail" Member="PolicyRequestDetails" ThisKey="empno" OtherKey="empno" Type="PolicyRequestDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accounts" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AccId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="empno" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompanyDetails" Member="CompanyDetails">
+    <Type Name="CompanyDetail">
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CompanyURL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CompanyDetail_policy" Member="policies" ThisKey="CompanyId" OtherKey="companyId" Type="policy" />
+    </Type>
+  </Table>
+  <Table Name="dbo.policies" Member="policies">
+    <Type Name="policy">
+      <Column Name="policyid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="policyname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="policydes" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Emi" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="companyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="policy_PolicyRequestDetail" Member="PolicyRequestDetails" ThisKey="policyid" OtherKey="PolycyId" Type="PolicyRequestDetail" />
+      <Association Name="policy_policiesonemployee" Member="policiesonemployees" ThisKey="policyid" OtherKey="policyid" Type="policiesonemployee" />
+      <Association Name="CompanyDetail_policy" Member="CompanyDetail" ThisKey="companyId" OtherKey="CompanyId" Type="CompanyDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
